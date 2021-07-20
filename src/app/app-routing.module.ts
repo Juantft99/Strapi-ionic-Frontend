@@ -8,9 +8,22 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'posts',
     pathMatch: 'full'
   },
+  {
+    path: 'posts',
+    loadChildren: () => import('./posts/posts.module').then( m => m.PostsPageModule)
+  },
+  {
+    path: 'post-form',
+    loadChildren: () => import('./post-form/post-form.module').then( m => m.PostFormPageModule)
+  },
+  {
+    path:'post/edit/:id',
+    loadChildren:() => import('./post-form/post-form.module').then( m => m.PostFormPageModule)
+
+  }
 ];
 
 @NgModule({
